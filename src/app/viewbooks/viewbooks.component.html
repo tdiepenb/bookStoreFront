@@ -1,0 +1,79 @@
+<div class="container">
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Author</th>
+        <th scope="col">Year</th>
+        <th scope="col">Price</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="books.length == 0">
+        <td colspan="5" style="text-align: center">
+          <h2>There are no products yet</h2>
+        </td>
+      </tr>
+      <tr *ngFor="let book of books">
+        <th>{{ book.id }}</th>
+        <td>{{ book.name }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.dateYear }}</td>
+        <td>{{ book.price.toFixed(2) }} €</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="deleteBook(book.id)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button type="button" class="btn btn-primary" (click)="RedirectToAddBook()">
+    Add new Book
+  </button>
+
+  <div class="card-group row">
+    <div class="col-sm-6">
+      <div class="card card-primary w-50 mx-auto rounded-lg m-5">
+        <div class="card-header">
+          <h5 class="card-title text-center">Oldest Book in Collection</h5>
+        </div>
+        <div class="card-body">
+          <p class="card-text text-center">
+            The Oldest Book in our Collection is:
+          </p>
+        </div>
+        <div class="card-footer">
+          <p class="card-text text-center">
+            <b>{{ oldestBook.name }}</b> from <i>{{ oldestBook.dateYear }}</i>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card w-50 mx-auto rounded-lg m-5">
+        <div class="card-header">
+          <h5 class="card-title text-center">Newest Book in Collection</h5>
+        </div>
+        <div class="card-body">
+          <p class="card-text text-center">
+            The newest Book in our Collection is:
+          </p>
+        </div>
+        <div class="card-footer">
+          <p class="card-text text-center">
+            <b>{{ mostRecentBook.name }}</b> from
+            <i>{{ mostRecentBook.dateYear }}</i>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
