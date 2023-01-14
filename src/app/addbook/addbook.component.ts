@@ -18,5 +18,6 @@ export class AddbookComponent {
     this._service
       .postBookToServer(this.book)
       .subscribe((data) => console.log(data));
+    this._route.navigate(['/']);
   }
 }
